@@ -13,12 +13,14 @@ namespace GME1011A3
             Fighter hero = new Fighter(100, "Aaron", 5); //TODO: Get these arguments from the user - health, name, strength
             Console.WriteLine("Here is our heroic hero: " + hero + "\n\n");
 
+            Console.WriteLine();
+            Console.WriteLine("How many enemies are you fighting? (whole number only, preferrably above 1)");
 
-            int numBaddies = 5; //TODO: Get number of baddies from the user
+            int numBaddies = int.Parse(Console.ReadLine()); //DONE: Get number of baddies from the user
             int numAliveBaddies = numBaddies;
 
 
-            //TODO: change this so that it can contain goblins and skellies! Just change the type of the list!!
+            //DONE: change this so that it can contain goblins and skellies! Just change the type of the list!!
             List<Minion> baddies = new List<Minion>();
 
 
@@ -26,11 +28,18 @@ namespace GME1011A3
             for (int i = 0; i < numBaddies; i++)
             {
 
-
-                //TODO: each baddie should have 50% chance of being a goblin, 50% chance of
+                //DONE: each baddie should have 50% chance of being a goblin, 50% chance of
                 //being a skellie. A skellie should have random health between 25 and 30, and 0 armour (remember
                 //skellie armour is 0 anyway)
-                baddies.Add(new Goblin(rng.Next(30, 35), rng.Next(1, 5), rng.Next(1, 10)));
+                if (rng.Next(0, 2) == 0)
+                {
+                    baddies.Add(new Skellie(rng.Next(25, 30), 0));
+                }
+
+                else
+                {
+                    baddies.Add(new Goblin(rng.Next(30, 35), rng.Next(1, 5), rng.Next(1, 10)));
+                }
             
             
             }
